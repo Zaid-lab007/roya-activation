@@ -1,0 +1,118 @@
+/* Figma Frame 1 (1920x1080):
+   Logo  x:727 y:287 w:466 h:253
+   CTA   x:736 y:672 w:457 h:114
+   Gap between logo bottom and CTA top = 132px
+*/
+
+.landing__scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 18, 22, 0.06) 0%,
+    rgba(0, 18, 22, 0) 40%,
+    rgba(0, 18, 22, 0.16) 100%
+  );
+}
+
+.landing__bg {
+  will-change: transform;
+}
+
+.landing__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.landing__hero {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(466px, 42vw);
+  /* Logo top = 287/1080 */
+  margin-top: clamp(120px, 26.57vh, 320px);
+}
+
+.landing__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 466 / 253;
+  object-fit: contain;
+  object-position: center center;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+  /* Keep visual center on the same axis as the CTA */
+  margin: 0 auto;
+}
+
+.landing__cta-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* Gap = 132/1080 between logo bottom and button top */
+  margin-top: clamp(72px, 12.22vh, 132px);
+}
+
+.landing__cta {
+  position: relative;
+  z-index: 1;
+  width: min(457px, 100%);
+  min-width: 0 !important;
+  min-height: clamp(72px, 10.55vh, 114px) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 70, 55, 0.35) 0%,
+    rgba(70, 90, 40, 0.28) 45%,
+    rgba(180, 130, 55, 0.32) 100%
+  ) !important;
+  box-shadow: 1px 17px 13.4px rgba(0, 0, 0, 0.22) !important;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.1rem, 1.875vw, 2.25rem) !important;
+}
+
+.landing__cta:hover {
+  box-shadow: 0 0 30px rgba(229, 182, 115, 0.35), 1px 17px 13.4px rgba(0, 0, 0, 0.22) !important;
+}
+
+.landing__cta--pressed {
+  transform: scale(0.94);
+}
+
+.landing__ripple {
+  position: absolute;
+  width: 120%;
+  height: 180%;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  animation: landing-ripple 0.7s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes landing-ripple {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+@media (max-width: 700px) {
+  .landing__hero {
+    width: min(360px, 86vw);
+    margin-top: clamp(96px, 18vh, 180px);
+  }
+
+  .landing__cta-wrap {
+    margin-top: clamp(56px, 8vh, 96px);
+  }
+}

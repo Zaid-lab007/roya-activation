@@ -1,0 +1,181 @@
+:root {
+  --gold: #e5b673;
+  --glass: rgba(0, 67, 74, 0.3);
+  --glass-strong: rgba(0, 40, 45, 0.45);
+  --cta-from: rgba(0, 153, 81, 0.2);
+  --cta-to: rgba(255, 193, 87, 0.2);
+  --text: #ffffff;
+  --shadow: 1px 17px 13.4px rgba(0, 0, 0, 0.22);
+  --radius-pill: 60px;
+  --radius-card: 50px;
+  --font: 'Montserrat', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: #061218;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.app-root {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.app-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.screen-bg {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.screen-bg.blurred {
+  filter: blur(10px);
+  transform: scale(1.05);
+}
+
+.screen-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 20, 24, 0.15) 0%,
+    rgba(0, 20, 24, 0.05) 40%,
+    rgba(0, 20, 24, 0.35) 100%
+  );
+}
+
+.screen-content {
+  position: relative;
+  z-index: 2;
+  width: min(1920px, 100%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.logo-roya {
+  width: clamp(140px, 18vw, 280px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+}
+
+.logo-roya.large {
+  width: clamp(220px, 28vw, 420px);
+}
+
+.screen-title {
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.2vw, 2.25rem);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.glass-surface {
+  background: var(--glass);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-fab {
+  position: absolute;
+  left: clamp(1rem, 3vw, 3.5rem);
+  bottom: clamp(1rem, 3vw, 2.5rem);
+  width: clamp(64px, 7vw, 110px);
+  height: clamp(64px, 7vw, 110px);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  padding: 0.85rem;
+  z-index: 3;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-fab:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 24px rgba(229, 182, 115, 0.35);
+}
+
+.nav-fab img {
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-root {
+    min-height: 100dvh;
+    height: auto;
+  }
+
+  .screen {
+    position: relative;
+    min-height: 100dvh;
+  }
+}

@@ -1,0 +1,32 @@
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.glass-button--glass {
+  background: var(--glass);
+}
+
+.glass-button--cta {
+  background: linear-gradient(90deg, var(--cta-from), var(--cta-to));
+  min-width: clamp(260px, 30vw, 457px);
+  min-height: clamp(72px, 8.5vw, 114px);
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 2.25rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.glass-button--cta:hover {
+  box-shadow: 0 0 28px rgba(229, 182, 115, 0.4), var(--shadow);
+}
