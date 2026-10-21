@@ -21,21 +21,6 @@
   gap: 0.5rem;
 }
 
-.playing__display-status {
-  margin-top: 0.35rem;
-  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.65;
-  color: #f0d7a8;
-}
-
-.playing__display-status.is-ready {
-  color: #b7e3c8;
-  opacity: 0.85;
-}
-
 .playing__card {
   width: min(491px, 72vw);
   aspect-ratio: 491 / 306;

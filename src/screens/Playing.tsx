@@ -17,7 +17,6 @@ export function Playing({ experienceId, onBack }: PlayingProps) {
   const experience = getExperience(experienceId)
   const [paused, setPaused] = useState(false)
   const [progress, setProgress] = useState(0)
-  const [displayReady, setDisplayReady] = useState(false)
   const onBackRef = useRef(onBack)
   onBackRef.current = onBack
 
@@ -36,14 +35,12 @@ export function Playing({ experienceId, onBack }: PlayingProps) {
 
     return subscribeDisplayEvents((event) => {
       if (event.type === 'ready') {
-        setDisplayReady(true)
         postDisplayCommand({ type: 'play', experienceId })
       }
 
       if (event.type === 'status') {
         setPaused(event.paused)
         setProgress(event.progress)
-        if (event.experienceId) setDisplayReady(true)
       }
 
       if (event.type === 'ended' && event.experienceId === experienceId) {
@@ -86,9 +83,6 @@ export function Playing({ experienceId, onBack }: PlayingProps) {
         >
           <img src="/assets/logo-roya.png" alt="Roya" className="logo-roya" />
           <h1 className="screen-title">Now Playing</h1>
-          <p className={`playing__display-status ${displayReady ? 'is-ready' : ''}`}>
-            {displayReady ? 'Playing on second display' : 'Open second display to play video'}
-          </p>
         </motion.div>
 
         <motion.button
