@@ -22,13 +22,13 @@ Tip: drag that window to the second screen and press `F11` for fullscreen.
 
 When you tap an experience on the main display, the video plays on the second display. Pause / seek / back on the main UI syncs over `BroadcastChannel`.
 
-## Replace placeholder videos
+## Videos
 
-Use portrait HD (1080×1920) when possible:
+Portrait HD (1080×1920) plays best on the second display:
 
-- `public/videos/seek.mp4`
-- `public/videos/steer.mp4`
-- `public/videos/stream.mp4`
+- RoyaSeek — `public/videos/WhatsApp Video.mp4`
+- RoyaSteer — `public/videos/WhatsApp Video 2026-10-21 at 12.33.01.mp4`
+- RoyaStream — `public/videos/WhatsApp Video 2026-10-21 at 12.33.03.mp4`
 
 ## Stack
 

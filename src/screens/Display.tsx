@@ -131,7 +131,6 @@ export function Display() {
           transition={{ duration: 0.6 }}
         >
           <img src="/assets/logo-roya.png" alt="Roya" className="display-idle__logo" />
-          <p className="display-idle__hint">Waiting for main display</p>
         </motion.div>
       )}
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ProgressBar } from '../components/ProgressBar'
 import { getExperience, type ExperienceId } from '../data/experiences'
@@ -18,6 +18,8 @@ export function Playing({ experienceId, onBack }: PlayingProps) {
   const [paused, setPaused] = useState(false)
   const [progress, setProgress] = useState(0)
   const [displayReady, setDisplayReady] = useState(false)
+  const onBackRef = useRef(onBack)
+  onBackRef.current = onBack
 
   useEffect(() => {
     setProgress(0)
@@ -44,9 +46,8 @@ export function Playing({ experienceId, onBack }: PlayingProps) {
         if (event.experienceId) setDisplayReady(true)
       }
 
-      if (event.type === 'ended') {
-        setPaused(true)
-        setProgress(1)
+      if (event.type === 'ended' && event.experienceId === experienceId) {
+        onBackRef.current()
       }
     })
   }, [experienceId])
