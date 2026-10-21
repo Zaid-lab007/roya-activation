@@ -52,11 +52,14 @@ export function Landing({ onStart }: LandingProps) {
           />
 
           <motion.div
-            className="landing__cta-wrap"
+            className={`landing__cta-wrap${exiting ? ' is-exiting' : ''}`}
             initial={{ opacity: 0, y: 28 }}
-            animate={exiting ? { opacity: 0, y: 36, scale: 0.94 } : { opacity: 1, y: 0, scale: 1 }}
+            animate={exiting ? { opacity: 0, y: 36, scale: 0.92 } : { opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: exiting ? 0 : 0.3, duration: exiting ? 0.35 : 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
+            <span className="landing__glow" aria-hidden />
+            <span className="landing__ring" aria-hidden />
+            <span className="landing__ring landing__ring--late" aria-hidden />
             <GlassButton
               variant="cta"
               className={exiting ? 'landing__cta landing__cta--pressed' : 'landing__cta'}
@@ -65,7 +68,12 @@ export function Landing({ onStart }: LandingProps) {
             >
               TAP TO START
             </GlassButton>
-            {exiting && <span className="landing__ripple" aria-hidden />}
+            {exiting && (
+              <>
+                <span className="landing__ripple" aria-hidden />
+                <span className="landing__ripple landing__ripple--late" aria-hidden />
+              </>
+            )}
           </motion.div>
         </motion.div>
       </div>
