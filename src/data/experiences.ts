@@ -14,21 +14,21 @@ export const experiences: Experience[] = [
     label: 'RoyaSeek',
     wordmark: '/assets/wordmark-seek.png',
     thumb: '/assets/thumb-seek.png',
-    video: '/videos/Roya%20Seek_V02.mp4',
+    video: '/videos/Roya_Seek_2mp4.mp4',
   },
   {
     id: 'steer',
     label: 'RoyaSteer',
     wordmark: '/assets/wordmark-steer.png',
     thumb: '/assets/thumb-steer.png',
-    video: '/videos/Roya%20Steer_V04.mp4',
+    video: '/videos/Roya_Steer_1.mp4',
   },
   {
     id: 'stream',
     label: 'RoyaStream',
     wordmark: '/assets/wordmark-stream.png',
     thumb: '/assets/thumb-stream.png',
-    video: '/videos/Roya%20Stream_V02.mp4',
+    video: '/videos/RoyaStream_3.mp4',
   },
 ]
 
