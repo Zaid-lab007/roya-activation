@@ -32,7 +32,7 @@ export const experiences: Experience[] = [
     id: 'scan',
     label: 'RoyaScan',
     wordmark: '/assets/wordmark-scan.png',
-    video: '/videos/ROYASCAN_FINAL_VIDEO.mp4',
+    video: '/videos/ROYASCAN_NEW_FINAL_VIDEO_5.mp4',
   },
 ]
 
