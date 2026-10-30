@@ -127,7 +127,11 @@ export function Playing({ experienceId, onBack }: PlayingProps) {
           <img
             src={experience.wordmark}
             alt={experience.label}
-            className="playing__wordmark"
+            className={
+              experience.id === 'scan'
+                ? 'playing__wordmark playing__wordmark--scan'
+                : 'playing__wordmark'
+            }
           />
         </motion.button>
 

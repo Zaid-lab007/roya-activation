@@ -55,6 +55,11 @@
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
+.experience-card__wordmark--scan {
+  width: min(100%, 239px);
+  max-height: 54px;
+}
+
 @media (max-width: 900px) {
   .experience-card {
     width: min(360px, 86vw);

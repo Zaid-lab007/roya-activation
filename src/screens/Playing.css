@@ -73,6 +73,11 @@
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
+.playing__wordmark--scan {
+  width: min(100%, 239px);
+  max-height: 54px;
+}
+
 .playing__progress-wrap {
   margin-top: auto;
   margin-bottom: clamp(2rem, 6vh, 4.5rem);

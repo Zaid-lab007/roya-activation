@@ -27,7 +27,11 @@ export function ExperienceCard({ experience, index, onSelect }: ExperienceCardPr
         <img
           src={experience.wordmark}
           alt={experience.label}
-          className="experience-card__wordmark"
+          className={
+            experience.id === 'scan'
+              ? 'experience-card__wordmark experience-card__wordmark--scan'
+              : 'experience-card__wordmark'
+          }
         />
       </div>
     </motion.button>
