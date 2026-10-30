@@ -21,10 +21,7 @@ export function ExperienceCard({ experience, index, onSelect }: ExperienceCardPr
       whileHover={{ scale: 1.045, y: -6 }}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="experience-card__media" aria-hidden>
-        <img src={experience.thumb} alt="" className="experience-card__thumb" />
-        <div className="experience-card__overlay" />
-      </div>
+      <div className="experience-card__overlay" aria-hidden />
       <div className="experience-card__content">
         <img src="/assets/icon-play.svg" alt="" className="experience-card__play" />
         <img

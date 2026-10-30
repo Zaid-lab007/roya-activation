@@ -1,6 +1,6 @@
 .experience-card {
   position: relative;
-  width: min(407px, 28vw);
+  width: min(360px, 22vw);
   min-width: 240px;
   aspect-ratio: 407 / 306;
   border: 2px solid var(--gold);
@@ -16,22 +16,6 @@
 
 .experience-card:hover {
   box-shadow: 0 0 32px rgba(229, 182, 115, 0.45), var(--shadow);
-}
-
-.experience-card__media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.experience-card__thumb {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0.35;
-  filter: grayscale(0.15) brightness(0.7);
-  transform: scale(1.15);
 }
 
 .experience-card__overlay {
@@ -64,7 +48,7 @@
 }
 
 .experience-card__wordmark {
-  width: clamp(140px, 12vw, 220px);
+  width: min(100%, 300px);
   height: auto;
   max-height: 68px;
   object-fit: contain;

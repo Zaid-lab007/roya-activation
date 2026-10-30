@@ -1,34 +1,38 @@
-export type ExperienceId = 'seek' | 'steer' | 'stream'
+export type ExperienceId = 'seek' | 'steer' | 'stream' | 'scan'
 
 export type Experience = {
   id: ExperienceId
   label: string
   wordmark: string
-  thumb: string
   video: string
 }
+
+export const idleVideo = '/videos/NESR_Intro_Video_Final.mp4'
 
 export const experiences: Experience[] = [
   {
     id: 'seek',
     label: 'RoyaSeek',
     wordmark: '/assets/wordmark-seek.png',
-    thumb: '/assets/thumb-seek.png',
-    video: '/videos/Roya_Seek_2mp4.mp4',
+    video: '/videos/ROYASEEK_FINAL_VIDEO.mp4',
   },
   {
     id: 'steer',
     label: 'RoyaSteer',
     wordmark: '/assets/wordmark-steer.png',
-    thumb: '/assets/thumb-steer.png',
-    video: '/videos/Roya_Steer_1.mp4',
+    video: '/videos/ROYASTEER_FINAL_VIDEO.mp4',
   },
   {
     id: 'stream',
     label: 'RoyaStream',
     wordmark: '/assets/wordmark-stream.png',
-    thumb: '/assets/thumb-stream.png',
-    video: '/videos/RoyaStream_3.mp4',
+    video: '/videos/ROYASTREAM_FINAL_VIDEO.mp4',
+  },
+  {
+    id: 'scan',
+    label: 'RoyaScan',
+    wordmark: '/assets/wordmark-scan.png',
+    video: '/videos/ROYASCAN_FINAL_VIDEO.mp4',
   },
 ]
 

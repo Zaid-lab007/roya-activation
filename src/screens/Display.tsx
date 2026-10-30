@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
-import { getExperience, type ExperienceId } from '../data/experiences'
+import { getExperience, idleVideo, type ExperienceId } from '../data/experiences'
 import {
   postDisplayEvent,
   subscribeDisplayCommands,
@@ -10,8 +9,8 @@ import './Display.css'
 
 export function Display() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const experienceIdRef = useRef<ExperienceId | null>(null)
   const [experienceId, setExperienceId] = useState<ExperienceId | null>(null)
-  const [idle, setIdle] = useState(true)
 
   useEffect(() => {
     postDisplayEvent({ type: 'ready' })
@@ -22,19 +21,14 @@ export function Display() {
       const video = videoRef.current
 
       if (command.type === 'play') {
+        experienceIdRef.current = command.experienceId
         setExperienceId(command.experienceId)
-        setIdle(false)
         return
       }
 
       if (command.type === 'stop') {
-        if (video) {
-          video.pause()
-          video.removeAttribute('src')
-          video.load()
-        }
+        experienceIdRef.current = null
         setExperienceId(null)
-        setIdle(true)
         postDisplayEvent({
           type: 'status',
           experienceId: null,
@@ -46,7 +40,7 @@ export function Display() {
         return
       }
 
-      if (!video) return
+      if (!video || !experienceIdRef.current) return
 
       if (command.type === 'pause') {
         video.pause()
@@ -72,19 +66,25 @@ export function Display() {
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !experienceId) return
+    if (!video) return
 
-    const experience = getExperience(experienceId)
-    video.src = experience.video
+    experienceIdRef.current = experienceId
+    const experience = experienceId ? getExperience(experienceId) : null
+    video.loop = !experience
+    video.src = experience ? experience.video : idleVideo
     video.currentTime = 0
     video.play().catch(() => undefined)
+
+    if (!experience || !experienceId) return
+
+    const playingId = experienceId
 
     function emitStatus() {
       if (!video) return
       const duration = video.duration || 0
       postDisplayEvent({
         type: 'status',
-        experienceId,
+        experienceId: playingId,
         paused: video.paused,
         currentTime: video.currentTime,
         duration,
@@ -93,8 +93,7 @@ export function Display() {
     }
 
     function onEnded() {
-      if (!experienceId) return
-      postDisplayEvent({ type: 'ended', experienceId })
+      postDisplayEvent({ type: 'ended', experienceId: playingId })
       emitStatus()
     }
 
@@ -117,22 +116,13 @@ export function Display() {
       <video
         ref={videoRef}
         className="display-video"
+        src={idleVideo}
         playsInline
         muted
         autoPlay
+        loop={experienceId === null}
         controls={false}
       />
-
-      {idle && (
-        <motion.div
-          className="display-idle"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img src="/assets/logo-roya.png" alt="Roya" className="display-idle__logo" />
-        </motion.div>
-      )}
     </div>
   )
 }
