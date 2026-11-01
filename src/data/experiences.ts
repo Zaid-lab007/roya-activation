@@ -7,7 +7,7 @@ export type Experience = {
   video: string
 }
 
-export const idleVideo = '/videos/NESR_Intro_Video_Final.mp4'
+export const idleVideo = '/videos/IDLE_VIDEO_1101.mp4'
 
 export const experiences: Experience[] = [
   {
